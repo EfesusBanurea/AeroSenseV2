@@ -18,6 +18,11 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./laravel/
           server-dir: ./laravel/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            vendor/**
 
       - name: Upload folder public_html
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
