@@ -1,0 +1,5 @@
+*.zip
+laravel/.env
+laravel/migrate_error.txt
+laravel/vendor/
+laravel/node_modules/
