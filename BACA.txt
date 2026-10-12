@@ -5,7 +5,7 @@ git pull
 
 ==Setelah ngoding==
 git add
-git commit
+git commit -m "pesan apa aja yang udah dirubah"
 git push
 
 
