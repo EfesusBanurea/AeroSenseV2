@@ -1,0 +1,17 @@
+==Sebelum ngoding==
+git pull
+
+//(ubah kode)//
+
+==Setelah ngoding==
+git add
+git commit
+git push
+
+
+
+
+==Khusus EGA==
+//git add .
+//git commit -m "kasih pesan cok"
+//git deploy //untuk ngepush ke server (ega aja)
