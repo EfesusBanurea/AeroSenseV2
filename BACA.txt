@@ -1,5 +1,6 @@
 CARA MENJALANKAN DI LOKAL
-php -S 127.0.0.1:8000 -t public_html
+(di folder utama "AeroSenseV2")
+php -S 127.0.0.1:8000 -t public_html 
 //(jangan pakai php artisan serve)
 
 ==Sebelum ngoding==
