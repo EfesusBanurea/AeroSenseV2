@@ -8,7 +8,7 @@ git pull
 //(ubah kode)//
 
 ==Setelah ngoding==
-git add
+git add .
 git commit -m "pesan apa aja yang udah dirubah"
 git push
 
