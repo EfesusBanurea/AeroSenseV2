@@ -7,6 +7,9 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
+            // Arahkan output build dan hot file ke public_html (document root)
+            publicDirectory: '../public_html',
+            buildDirectory: 'build',
         }),
         tailwindcss(),
     ],
