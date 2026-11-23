@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\GenerateHourlySensorReadings' => $baseDir . '/app/Console/Commands/GenerateHourlySensorReadings.php',
     'App\\Filament\\Pages\\GrafikTrenData' => $baseDir . '/app/Filament/Pages/GrafikTrenData.php',
     'App\\Filament\\Pages\\PemantauanKualitasUdara' => $baseDir . '/app/Filament/Pages/PemantauanKualitasUdara.php',
     'App\\Filament\\Pages\\PrediksiPage' => $baseDir . '/app/Filament/Pages/PrediksiPage.php',
