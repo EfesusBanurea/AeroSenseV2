@@ -52,13 +52,13 @@ class SensorDataController extends Controller
             // Determine air quality status from CO2 level
             $status = $this->calculateAirQuality((float)$co2, (float)$temp, (float)$hum);
 
-            // ── Limit receiving to once per minute per faculty ──
+            // ── Limit receiving to once per hour per faculty ──
             $lastReading = SensorReading::where('faculty_id', $facultyId)->latest('recorded_at')->first();
             $diffSeconds = $lastReading ? abs(now()->diffInSeconds($lastReading->recorded_at)) : 99999;
-            if ($lastReading && $diffSeconds < 60) {
+            if ($lastReading && $diffSeconds < 3600) {
                 return response()->json([
                     'success'    => true,
-                    'message'    => 'Data skipped (1 minute throttling active)',
+                    'message'    => 'Data skipped (1 hour throttling active)',
                     'id'         => $lastReading->id,
                     'faculty_id' => $facultyId,
                     'status'     => $status,
@@ -249,17 +249,17 @@ class SensorDataController extends Controller
 
             $status = $this->calculateAirQuality((float) $co2, (float) $temp, (float) $hum);
 
-            // Throttle: maksimal 1 data per menit per node
+            // Throttle: maksimal 1 data per jam per node
             $lastReading = SensorReading::where('faculty_id', $facultyId)->latest('recorded_at')->first();
             $diffSeconds = $lastReading ? abs(now()->diffInSeconds($lastReading->recorded_at)) : 99999;
-            if ($lastReading && $diffSeconds < 60) {
-                $sisaDetik = (int) ceil(60 - $diffSeconds);
+            if ($lastReading && $diffSeconds < 3600) {
+                $sisaMenit = (int) ceil((3600 - $diffSeconds) / 60);
                 return response()->json([
                     'success'      => true,
-                    'message'      => "Data diskip — throttle aktif. Kirim lagi dalam {$sisaDetik} detik.",
+                    'message'      => "Data diskip — throttle aktif. Kirim lagi dalam {$sisaMenit} menit.",
                     'node'         => $faculty->name,
                     'faculty_id'   => $facultyId,
-                    'next_allowed' => now()->addSeconds(60 - $diffSeconds)->toIso8601String(),
+                    'next_allowed' => now()->addSeconds(3600 - $diffSeconds)->toIso8601String(),
                 ], 201);
             }
 
